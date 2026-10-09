@@ -1,0 +1,8 @@
+quota -s | tail -2                                              # three models are in the cache at once now
+export KUKI_RESULTS=$PWD/results_gemma4-e4b; mkdir -p "$KUKI_RESULTS" logs/manual
+pgrep -af "run_condition.py --model gemma4-e4b"                 # must print nothing
+CUDA_DEVICE_ORDER=PCI_BUS_ID CUDA_VISIBLE_DEVICES=2 VLLM_USE_FLASHINFER_SAMPLER=0 nohup vllm serve google/gemma-4-E4B-it --port 8002 --max-model-len 16384 --gpu-memory-utilization 0.70 --tensor-parallel-size 1 --generation-config vllm > logs/manual/gemma4-e4b.vllm.log 2>&1 & echo $! > logs/manual/gemma4-e4b.pid
+for i in $(seq 270); do curl -s localhost:8002/v1/models > /dev/null && break; kill -0 "$(cat logs/manual/gemma4-e4b.pid)" 2>/dev/null || break; sleep 10; done
+if curl -s localhost:8002/v1/models > /dev/null; then
+  for s in dev test; do for c in $(ls datasets | grep -v '^_'); do python run_condition.py --model gemma4-e4b --condition $c --split $s --base-url http://localhost:8002/v1 2>&1 | tee -a logs/manual/gemma4-e4b.run.log; done; done
+else echo "NOT READY"; tail -20 logs/manual/gemma4-e4b.vllm.log; fi

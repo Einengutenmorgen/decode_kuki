@@ -4,7 +4,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 DATA_DIR = Path(os.environ.get("KUKI_DATA", ROOT / "data"))   # kuki_{ru,tr}_aggregate.jsonl
-DS_DIR, RES_DIR, JUDGE_DIR = ROOT / "datasets", ROOT / "results", ROOT / "judgments"
+DS_DIR, JUDGE_DIR = ROOT / "datasets", ROOT / "judgments"
+RES_DIR = Path(os.environ.get("KUKI_RESULTS", ROOT / "results"))
 SEED = 13
 PROMPT_VERSION = "v2"   # bump whenever prompts.py changes; results files carry it, so versions never mix
 DEV_SIZE = {"ru": 40, "tr": 10}                                # cases per language, drawn phrase-grouped
