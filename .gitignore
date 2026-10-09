@@ -1,0 +1,6 @@
+/.env
+/__pycache__
+/_log
+/data
+/venvDecodeKuKi
+/vllm_olmo7b.log

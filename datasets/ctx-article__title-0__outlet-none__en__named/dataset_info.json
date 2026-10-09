@@ -1,0 +1,105 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "case_id": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "condition_id": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "lang": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "article_id": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "source": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "pole_true": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "annotator": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "split": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "is_multiref": {
+      "dtype": "bool",
+      "_type": "Value"
+    },
+    "span_in_title": {
+      "dtype": "bool",
+      "_type": "Value"
+    },
+    "phrase": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "context": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "title_shown": {
+      "dtype": "bool",
+      "_type": "Value"
+    },
+    "outlet_mode": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "outlet_shown": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "pole_shown": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "prompt_lang": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "naming": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "prompt_version": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "messages": {
+      "feature": {
+        "role": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "content": {
+          "dtype": "string",
+          "_type": "Value"
+        }
+      },
+      "_type": "List"
+    },
+    "schema": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "n_chars": {
+      "dtype": "int64",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": ""
+}

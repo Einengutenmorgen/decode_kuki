@@ -1,0 +1,20 @@
+Saving the dataset (0/1 shards):   0%|          | 0/50 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 13501.27 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 13000.76 examples/s]
+ctx-paragraph__title-0__outlet-none__en__named / gemma4-12b / v2: 50 results (50 new), parse_ok 50, errors 0, 2.55 cases/s
+Saving the dataset (0/1 shards):   0%|          | 0/50 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 15946.71 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 15228.76 examples/s]
+ctx-paragraph__title-0__outlet-swapped__en__named / gemma4-12b / v2: 50 results (50 new), parse_ok 50, errors 0, 2.74 cases/s
+Saving the dataset (0/1 shards):   0%|          | 0/50 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 14949.76 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 14377.84 examples/s]
+ctx-paragraph__title-0__outlet-true__en__named / gemma4-12b / v2: 50 results (50 new), parse_ok 50, errors 0, 2.51 cases/s
+Saving the dataset (0/1 shards):   0%|          | 0/50 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 15717.24 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 14924.22 examples/s]
+ctx-paragraph__title-1__outlet-none__en__named / gemma4-12b / v2: 50 results (50 new), parse_ok 50, errors 0, 2.74 cases/s
+Saving the dataset (0/1 shards):   0%|          | 0/50 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 13868.22 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 13324.56 examples/s]
+ctx-phrase__title-0__outlet-none__en__named / gemma4-12b / v2: 50 results (50 new), parse_ok 50, errors 0, 2.84 cases/s
+Saving the dataset (0/1 shards):   0%|          | 0/50 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 11996.75 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 11282.90 examples/s]
+ctx-phrase__title-1__outlet-none__en__named / gemma4-12b / v2: 50 results (50 new), parse_ok 50, errors 0, 2.82 cases/s
+Saving the dataset (0/1 shards):   0%|          | 0/50 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 16293.62 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 15493.14 examples/s]
+ctx-sentence__title-0__outlet-none__en__named / gemma4-12b / v2: 50 results (50 new), parse_ok 50, errors 0, 2.92 cases/s
+Saving the dataset (0/1 shards):   0%|          | 0/50 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 14222.80 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 13617.87 examples/s]
+ctx-article__title-0__outlet-none__en__named / gemma4-12b / v2: 50 results (50 new), parse_ok 50, errors 0, 1.43 cases/s
+Saving the dataset (0/1 shards):   0%|          | 0/50 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 17805.67 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 16890.72 examples/s]
+ctx-article__title-0__outlet-none__en__unnamed / gemma4-12b / v2: 50 results (50 new), parse_ok 50, errors 0, 0.51 cases/s
+Saving the dataset (0/1 shards):   0%|          | 0/50 [00:00<?, ? examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 15846.70 examples/s]Saving the dataset (1/1 shards): 100%|██████████| 50/50 [00:00<00:00, 15068.99 examples/s]
+ctx-paragraph__title-0__outlet-none__en__unnamed / gemma4-12b / v2: 50 results (50 new), parse_ok 50, errors 0, 0.65 cases/s

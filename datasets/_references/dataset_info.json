@@ -1,0 +1,64 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "case_id": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "lang": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "article_id": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "annotator": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "phrase": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "literal": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "insider": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "why": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "split": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "is_multiref": {
+      "dtype": "bool",
+      "_type": "Value"
+    },
+    "same_article_multiref": {
+      "dtype": "bool",
+      "_type": "Value"
+    },
+    "span_in_title": {
+      "dtype": "bool",
+      "_type": "Value"
+    },
+    "crosses_sentence": {
+      "dtype": "bool",
+      "_type": "Value"
+    },
+    "crosses_paragraph": {
+      "dtype": "bool",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": ""
+}

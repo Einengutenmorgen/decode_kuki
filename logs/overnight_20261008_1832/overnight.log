@@ -1,0 +1,39 @@
+[18:32:29] start: models [gemma4-e4b gemma4-12b], phases [dev test], gate strict, logs in logs/overnight_20261008_1832
+[18:32:38] gemma4-e4b/dev already complete, skipping
+[18:32:48] gemma4-12b/dev already complete, skipping
+[18:33:08] loading google/gemma-4-E4B-it on GPUs 0 (tensor-parallel 1); first load downloads the weights
+[18:36:19] google/gemma-4-E4B-it is ready
+[18:36:19] === gemma4-e4b / test: running ===
+gemma4-e4b | ctx-paragraph__title-0__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-e4b | ctx-paragraph__title-0__outlet-swapped__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-e4b | ctx-paragraph__title-0__outlet-true__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-e4b | ctx-paragraph__title-1__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-e4b | ctx-phrase__title-0__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-e4b | ctx-phrase__title-1__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-e4b | ctx-sentence__title-0__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-e4b | ctx-article__title-0__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-e4b | ctx-article__title-0__outlet-none__en__unnamed | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-e4b | ctx-paragraph__title-0__outlet-none__en__unnamed | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+[19:10:10] === gemma4-e4b / test finished in 37 min ===
+[19:10:10] vLLM is running (model: google/gemma-4-E4B-it); stopping (pids: 1145210 1145560 )
+[19:10:13] deleting cache /home/hau/.cache/huggingface/hub/models--google--gemma-4-E4B-it (96K)
+[19:10:13] no cache to delete for google/gemma-4-E4B-it
+[19:10:14] loading google/gemma-4-12B-it on GPUs 0 (tensor-parallel 1); first load downloads the weights
+[19:13:45] google/gemma-4-12B-it is ready
+[19:13:45] === gemma4-12b / test: running ===
+gemma4-12b | ctx-paragraph__title-0__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-12b | ctx-paragraph__title-0__outlet-swapped__en__named | test: 996/996 cases, api errors 0, unparsable 1 (0.1%) -> ok
+gemma4-12b | ctx-paragraph__title-0__outlet-true__en__named | test: 996/996 cases, api errors 0, unparsable 2 (0.2%) -> ok
+gemma4-12b | ctx-paragraph__title-1__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 1 (0.1%) -> ok
+gemma4-12b | ctx-phrase__title-0__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 2 (0.2%) -> ok
+gemma4-12b | ctx-phrase__title-1__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 1 (0.1%) -> ok
+gemma4-12b | ctx-sentence__title-0__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-12b | ctx-article__title-0__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 2 (0.2%) -> ok
+gemma4-12b | ctx-article__title-0__outlet-none__en__unnamed | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-12b | ctx-paragraph__title-0__outlet-none__en__unnamed | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+[20:41:40] === gemma4-12b / test finished in 91 min ===
+[20:41:40] vLLM is running (model: google/gemma-4-12B-it); stopping (pids: 1159324 1159798 )
+[20:41:42] deleting cache /home/hau/.cache/huggingface/hub/models--google--gemma-4-12B-it (96K)
+[20:41:42] no cache to delete for google/gemma-4-12B-it
+[20:41:42] summary: 20 ok, 0 FAIL (details: logs/overnight_20261008_1832/status.tsv)
+[20:41:42] cleanup: unloading server and deleting the current model's cache

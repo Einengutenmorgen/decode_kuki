@@ -1,0 +1,91 @@
+[18:32:29] start: models [gemma4-e4b gemma4-12b], phases [dev test], gate strict, logs in logs/overnight_20261008_1832
+[18:32:38] gemma4-e4b/dev already complete, skipping
+[18:32:48] gemma4-12b/dev already complete, skipping
+[18:33:08] loading google/gemma-4-E4B-it on GPUs 0 (tensor-parallel 1); first load downloads the weights
+[18:36:19] google/gemma-4-E4B-it is ready
+[18:36:19] === gemma4-e4b / test: running ===
+gemma4-e4b | ctx-paragraph__title-0__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-e4b | ctx-paragraph__title-0__outlet-swapped__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-e4b | ctx-paragraph__title-0__outlet-true__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-e4b | ctx-paragraph__title-1__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-e4b | ctx-phrase__title-0__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-e4b | ctx-phrase__title-1__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-e4b | ctx-sentence__title-0__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-e4b | ctx-article__title-0__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-e4b | ctx-article__title-0__outlet-none__en__unnamed | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-e4b | ctx-paragraph__title-0__outlet-none__en__unnamed | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+[19:10:10] === gemma4-e4b / test finished in 37 min ===
+[19:10:10] vLLM is running (model: google/gemma-4-E4B-it); stopping (pids: 1145210 1145560 )
+[19:10:13] deleting cache /home/hau/.cache/huggingface/hub/models--google--gemma-4-E4B-it (96K)
+[19:10:13] no cache to delete for google/gemma-4-E4B-it
+[19:10:14] loading google/gemma-4-12B-it on GPUs 0 (tensor-parallel 1); first load downloads the weights
+[19:13:45] google/gemma-4-12B-it is ready
+[19:13:45] === gemma4-12b / test: running ===
+gemma4-12b | ctx-paragraph__title-0__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-12b | ctx-paragraph__title-0__outlet-swapped__en__named | test: 996/996 cases, api errors 0, unparsable 1 (0.1%) -> ok
+gemma4-12b | ctx-paragraph__title-0__outlet-true__en__named | test: 996/996 cases, api errors 0, unparsable 2 (0.2%) -> ok
+gemma4-12b | ctx-paragraph__title-1__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 1 (0.1%) -> ok
+gemma4-12b | ctx-phrase__title-0__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 2 (0.2%) -> ok
+gemma4-12b | ctx-phrase__title-1__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 1 (0.1%) -> ok
+gemma4-12b | ctx-sentence__title-0__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-12b | ctx-article__title-0__outlet-none__en__named | test: 996/996 cases, api errors 0, unparsable 2 (0.2%) -> ok
+gemma4-12b | ctx-article__title-0__outlet-none__en__unnamed | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+gemma4-12b | ctx-paragraph__title-0__outlet-none__en__unnamed | test: 996/996 cases, api errors 0, unparsable 0 (0.0%) -> ok
+[20:41:40] === gemma4-12b / test finished in 91 min ===
+[20:41:40] vLLM is running (model: google/gemma-4-12B-it); stopping (pids: 1159324 1159798 )
+[20:41:42] deleting cache /home/hau/.cache/huggingface/hub/models--google--gemma-4-12B-it (96K)
+[20:41:42] no cache to delete for google/gemma-4-12B-it
+[20:41:42] summary: 20 ok, 0 FAIL (details: logs/overnight_20261008_1832/status.tsv)
+[20:41:42] cleanup: unloading server and deleting the current model's cache
+[20:41:42] start: models [qwen3.8-27b gemma4-31b olmo3.1-32b], phases [dev test], gate strict, logs in logs/overnight_20261008_2041
+[20:41:44] loading Qwen/Qwen3.8-27B on GPUs 0,1 (tensor-parallel 2); first load downloads the weights
+[20:46:25] vLLM exited early; last log lines:
+        ^^^^^^^
+    )
+    ^
+  File "/home/hau/decode_kuki/venvDecodeKuKi/lib/python3.14/site-packages/vllm/v1/engine/utils.py", line 1348, in wait_for_engine_startup
+    raise RuntimeError(
+    ...<8 lines>...
+    )
+RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+/usr/lib/python3.14/multiprocessing/resource_tracker.py:396: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown: {'/mp-3oi0_2xg'}
+  warnings.warn(
+/usr/lib/python3.14/multiprocessing/resource_tracker.py:396: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown: {'/psm_4f064628'}
+  warnings.warn(
+[20:46:26] deleting cache /home/hau/.cache/huggingface/hub/models--Qwen--Qwen3.8-27B (906M)
+[20:46:27] loading google/gemma-4-31B-it on GPUs 0,1 (tensor-parallel 2); first load downloads the weights
+[20:47:57] vLLM exited early; last log lines:
+    )
+    ^
+  File "/home/hau/decode_kuki/venvDecodeKuKi/lib/python3.14/site-packages/vllm/v1/engine/utils.py", line 1348, in wait_for_engine_startup
+    raise RuntimeError(
+    ...<8 lines>...
+    )
+RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {'EngineCore': 1}
+(APIServer pid=1189098) INFO 10-08 20:47:50 [base.py:255] Multi-modal warmup completed in 65.818s
+/usr/lib/python3.14/multiprocessing/resource_tracker.py:396: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown: {'/mp-6stc0g4d'}
+  warnings.warn(
+/usr/lib/python3.14/multiprocessing/resource_tracker.py:396: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown: {'/psm_dd32cbe7'}
+  warnings.warn(
+[20:47:57] deleting cache /home/hau/.cache/huggingface/hub/models--google--gemma-4-31B-it (257M)
+[20:48:10] loading allenai/Olmo-3.1-32B-Instruct on GPUs 0,1 (tensor-parallel 2); first load downloads the weights
+[20:51:11] vLLM exited early; last log lines:
+        ^^^^^^^
+    )
+    ^
+  File "/home/hau/decode_kuki/venvDecodeKuKi/lib/python3.14/site-packages/vllm/v1/engine/utils.py", line 1348, in wait_for_engine_startup
+    raise RuntimeError(
+    ...<8 lines>...
+    )
+RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+/usr/lib/python3.14/multiprocessing/resource_tracker.py:396: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown: {'/mp-sormd9s9'}
+  warnings.warn(
+/usr/lib/python3.14/multiprocessing/resource_tracker.py:396: UserWarning: resource_tracker: There appear to be 1 leaked shared_memory objects to clean up at shutdown: {'/psm_992e27ae'}
+  warnings.warn(
+[20:51:11] deleting cache /home/hau/.cache/huggingface/hub/models--allenai--Olmo-3.1-32B-Instruct (950M)
+[20:51:12] TEST PHASE NOT STARTED: dev is not clean for qwen3.8-27b (GATE=strict). See logs/overnight_20261008_2041/status.tsv
+[20:51:12] summary: 0 ok, 3 FAIL (details: logs/overnight_20261008_2041/status.tsv)
+qwen3.8-27b	dev	(load)	FAIL
+gemma4-31b	dev	(load)	FAIL
+olmo3.1-32b	dev	(load)	FAIL
+[20:51:12] cleanup: unloading server and deleting the current model's cache
