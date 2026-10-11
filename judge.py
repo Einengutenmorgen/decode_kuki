@@ -1,11 +1,16 @@
 """LLM judge for the L4 decoding experiment: do two explanations of a coded phrase mean the same?
-Symmetric pairwise comparison (Explanation A / B, order fixed per case and balanced within split and language), blind to condition and model.
-  python judge.py run --results results/<name>.jsonl --judge-model <model> --split dev|test|all [--base-url URL] [--runs 1] [--dry-run]
-  python judge.py control --kind literal|shuffled --judge-model <model> --split dev|test|all [--dry-run]
-  python judge.py sample --judgments judgments/ctx-*__j2.jsonl [--n 100]   # blind sheet for hand labelling (dev only)
+Two rounds of calls per item (j3):
+  1. insider round: symmetric pairwise comparison (Explanation A / B, order fixed per case and balanced within split and language),
+     blind to condition and model -> verdict (core meaning), plus which side holds substantial extra ideas (mapped back to the candidate).
+  2. literal round: how far does the candidate only restate the annotator's literal (surface) reading? -> literal_overlap.
+  python judge.py run --results results/<n>.jsonl --judge-model <model> --split dev|test|all [--base-url URL] [--runs 1] [--dry-run]
+  python judge.py control --kind literal|shuffled|reference --judge-model <model> --split dev|test|all [--dry-run]
+      literal = annotator's literal reading as candidate (floor); shuffled = another case's reference (chance);
+      reference = the annotator's own insider text as candidate (identity check; round 2 shows which references only restate their literal reading)
+  python judge.py sample --judgments judgments/ctx-*__j3.jsonl [--n 100]   # blind sheet for hand labelling (dev only)
   python judge.py agree [--dir judgments]                                   # judge-vs-human agreement after labelling
 Any OpenAI-compatible endpoint works (vLLM, OpenRouter, ...); key in env JUDGE_API_KEY. --no-schema if it lacks json_schema support;
---extra-body passes provider-specific fields; every judgment records the served model/provider and token counts.
+--extra-body passes provider-specific fields; every judgment records the served model/provider and token counts (summed over both rounds).
 TODO: the unnamed (detection ablation) conditions are skipped here; they get a separate standalone script (score_unnamed.py)."""
 import argparse, collections, csv, fcntl, json, os, random, re, sys, time
 from concurrent.futures import ThreadPoolExecutor
@@ -13,23 +18,40 @@ from pathlib import Path
 import numpy as np
 import config
 
-JUDGE_VERSION = "j2"                                            # j1 = asymmetric reference/candidate prompt (retired)
+JUDGE_VERSION = "j3"                                            # j1 = asymmetric reference/candidate prompt (retired); j2 = one call, verdict only
 VERDICTS = ["not_equivalent", "partially_equivalent", "equivalent"]   # ordinal, low -> high
-SCHEMA = {"type": "object", "required": ["reason", "verdict"], "additionalProperties": False,
-          "properties": {"reason": {"type": "string"}, "verdict": {"type": "string", "enum": VERDICTS}}}
+SCHEMA = {"type": "object", "required": ["reason", "verdict", "only_a", "only_b"], "additionalProperties": False,
+          "properties": {"reason": {"type": "string"}, "verdict": {"type": "string", "enum": VERDICTS},
+                         "only_a": {"type": "boolean"}, "only_b": {"type": "boolean"}}}
+LITERAL_SCHEMA = {"type": "object", "required": ["reason", "literal_overlap"], "additionalProperties": False,
+                  "properties": {"reason": {"type": "string"}, "literal_overlap": {"type": "string", "enum": VERDICTS}}}
 RUBRIC = """You compare two explanations of the same coded expression from Russian or Turkish political journalism. Decide whether they convey the same insider meaning.
-- equivalent: same core meaning (same referent, allusion, saying, event or concept); wording and extra detail may differ.
-- partially_equivalent: overlapping meaning or the same general direction, but the core meaning differs or only part is shared.
+The core meaning is what the expression signals to an in-group reader (its stance, allusion, implication, or the saying, event or person it points to), not merely what it names or translates to.
+- equivalent: same core meaning; wording and extra detail may differ.
+- partially_equivalent: overlapping meaning or the same general direction, but the core meaning differs or only part is shared. An explanation that only names or translates the expression, without saying what it signals, is at most partially_equivalent when the other explanation does say what it signals.
 - not_equivalent: different or unrelated meanings.
 Judge the meaning of the expression only, not length or style. Neither explanation is a gold standard; either may be incomplete.
+Then record distinct ideas beyond what the two share: only_a = true if Explanation A makes a distinct claim about who, what or why that B does not make (an additional or different referent, motive, stance or implication); only_b = true likewise for B. Elaboration, dates, examples, synonyms, more precise wording, or a more explicit version of the same idea do not count. Both are false when the verdict is not_equivalent.
 
-Examples (development set):
-Expression: «Z-патриоты» | Explanation A: Supporters of Russia's invasion and pro-war propaganda. | Explanation B: hardline pro-war supporters (likely a political faction or label in Russian media) -> equivalent
-Expression: «в формате письма Деду Морозу» | Explanation A: a mock-serious, ironic letter style used to draw attention to a serious issue | Explanation B: A childish, implausible wish addressed to a mythical gift-giver. -> partially_equivalent (shared ironic direction, A misses the childish, implausible wish)
-Expression: «бояре плохие» | Explanation A: part of the saying "the Tsar is good, the boyars are bad"; boyars are the ruling class around a tsar | Explanation B: bad hussars, a pejorative term for incompetent military units -> not_equivalent
+Examples:
+Expression: «Z-патриоты» | Explanation A: Supporters of Russia's invasion and pro-war propaganda. | Explanation B: hardline pro-war supporters (likely a political faction or label in Russian media) -> equivalent; only_a false, only_b false
+Expression: «в формате письма Деду Морозу» | Explanation A: a mock-serious, ironic letter style used to draw attention to a serious issue | Explanation B: A childish, implausible wish addressed to a mythical gift-giver. -> partially_equivalent (shared ironic direction); only_a true (draws attention to a serious issue), only_b true (childish, implausible wish)
+Expression: «бояре плохие» | Explanation A: part of the saying "the Tsar is good, the boyars are bad"; boyars are the ruling class around a tsar | Explanation B: bad hussars, a pejorative term for incompetent military units -> not_equivalent; only_a false, only_b false
+Expression: «синие занавески» | Explanation A: The blue curtains. | Explanation B: A conventional euphemism for covert surveillance of critics by the security services. -> partially_equivalent (A only names the expression, B says what it signals); only_a false, only_b true (the surveillance meaning)
 
-Answer with one JSON object: {"reason": "<one sentence, at most 30 words>", "verdict": "equivalent" | "partially_equivalent" | "not_equivalent"}"""
-ANCHOR_PHRASES = {"Z-патриоты", "в формате письма Деду Морозу", "бояре плохие"}   # used in the rubric; excluded from validation
+Answer with one JSON object: {"reason": "<two sentences, at most 50 words: what the explanations share, what differs>", "verdict": "equivalent" | "partially_equivalent" | "not_equivalent", "only_a": true | false, "only_b": true | false}"""
+LITERAL_RUBRIC = """An expression from Russian or Turkish political journalism has a plain surface rendering (what an outsider would understand from the words alone) and an explanation of what it means. Decide how far the explanation only restates that surface rendering.
+- equivalent: the explanation only restates or paraphrases the surface rendering; it adds no meaning beyond the words.
+- partially_equivalent: it restates the surface rendering and adds some further meaning.
+- not_equivalent: it conveys a meaning clearly beyond the surface rendering, or is unrelated to it.
+
+Examples:
+Expression: «чайник на плите» | Surface rendering: the kettle on the stove | Explanation: A kettle that is standing on a stove. -> equivalent
+Expression: «в формате письма Деду Морозу» | Surface rendering: in the format of a letter to Grandfather Frost | Explanation: A childish, implausible wish addressed to a mythical gift-giver. -> partially_equivalent (keeps the letter-to-a-gift-giver image, adds the implausible wish)
+Expression: «Z-патриоты» | Surface rendering: Z-patriots | Explanation: Supporters of Russia's invasion and pro-war propaganda. -> not_equivalent
+
+Answer with one JSON object: {"reason": "<one sentence, at most 30 words>", "literal_overlap": "equivalent" | "partially_equivalent" | "not_equivalent"}"""
+ANCHOR_PHRASES = {"Z-патриоты", "в формате письма Деду Морозу", "бояре плохие"}   # used in the rubrics; excluded from validation
 
 def load_refs():
     from datasets import load_from_disk
@@ -66,7 +88,8 @@ def tasks_from_results(rows, refs, split):
     return sorted(tasks, key=lambda t: (t["case_id"], t["run"]))
 
 def control_tasks(kind, refs, split):
-    """literal: the annotator's own literal reading as candidate (floor). shuffled: another case's reference (chance)."""
+    """literal: the annotator's own literal reading as candidate (floor). shuffled: another case's reference (chance).
+    reference: the annotator's own insider text as candidate (identity check; round 2 flags references that only restate their literal reading)."""
     rng, tasks = random.Random(config.SEED), []
     for lang in ("ru", "tr"):
         ids = sorted(k for k, c in refs.items() if c["lang"] == lang and (split == "all" or c["split"] == split))
@@ -75,7 +98,7 @@ def control_tasks(kind, refs, split):
             rng.shuffle(perm)
             if all(refs[a]["phrase"].casefold() != refs[b]["phrase"].casefold() for a, b in zip(ids, perm)): break
         for a, b in zip(ids, perm):
-            cand = (refs[a]["literal"] if kind == "literal" else refs[b]["insider"]).strip()
+            cand = (refs[a]["literal"] if kind == "literal" else refs[a]["insider"] if kind == "reference" else refs[b]["insider"]).strip()
             tasks.append(dict(case_id=a, condition_id=f"control-{kind}", model="control", run=0, naming="named",
                               candidate=cand or None, matched_phrase="", verdict=None if cand else "invalid"))
     return tasks
@@ -92,6 +115,44 @@ def order_map(refs):
 def user_message(c, candidate, ref_first):
     a, b = (c["insider"], candidate) if ref_first else (candidate, c["insider"])
     return f"Expression ({config.LANG_NAME[c['lang']]}): {c['phrase']}\nExplanation A: {a}\nExplanation B: {b}"
+
+def literal_message(c, candidate):                              # roles differ (surface rendering vs explanation), so no A/B order
+    return f"Expression ({config.LANG_NAME[c['lang']]}): {c['phrase']}\nSurface rendering: {c['literal']}\nExplanation: {candidate}"
+
+def check_main(j):
+    """Validate/normalise the insider-round reply in place; '' = ok, else an error string (the call is retried)."""
+    j["verdict"] = str(j.get("verdict", "")).strip().lower()
+    if j["verdict"] not in VERDICTS: return f"bad verdict {j['verdict']!r}"
+    for k in ("only_a", "only_b"):
+        if not isinstance(j.get(k), bool): return f"bad {k} {j.get(k)!r}"
+    return ""
+
+def check_literal(j):
+    j["literal_overlap"] = str(j.get("literal_overlap", "")).strip().lower()
+    return "" if j["literal_overlap"] in VERDICTS else f"bad literal_overlap {j['literal_overlap']!r}"
+
+def ask(client, args, extra, system, user, schema, check):
+    """One judge call with up to 3 attempts -> (reply dict, response, '') or (None, None, error)."""
+    kw = dict(model=args.judge_model, temperature=0, max_tokens=args.max_tokens,
+              messages=[{"role": "system", "content": system}, {"role": "user", "content": user}])
+    if extra: kw["extra_body"] = extra
+    if not args.no_schema: kw["response_format"] = {"type": "json_schema", "json_schema": {"name": "judgment", "schema": schema, "strict": True}}
+    err = ""
+    for attempt in range(3):
+        try:
+            resp = client.chat.completions.create(**kw); choice = resp.choices[0]
+            m = re.search(r"\{.*\}", choice.message.content or "", re.S)
+            if not m: err = f"no JSON in reply (finish_reason={choice.finish_reason})"
+            else:
+                j = json.loads(m.group(0)); err = check(j)
+                if not err: return j, resp, ""
+        except Exception as e: err = str(e)
+        time.sleep(2 ** attempt)
+    return None, None, err
+
+def add_tokens(row, resp):
+    u = resp.usage
+    if u: row["tokens_in"] = (row["tokens_in"] or 0) + u.prompt_tokens; row["tokens_out"] = (row["tokens_out"] or 0) + u.completion_tokens
 
 def dry_verdict(ref, cand):                                     # token overlap, only to test the plumbing
     a, b = set(ref.casefold().split()), set(cand.casefold().split())
@@ -114,32 +175,30 @@ def run_tasks(tasks, refs, args, out_path):
     def work(t):
         c, ref_first = refs[t["case_id"]], order[t["case_id"]]
         row = {**t, "judge_model": "dry-run" if args.dry_run else args.judge_model, "judge_version": JUDGE_VERSION,
-               "reason": "", "a_is": "reference" if ref_first else "candidate",
+               "reason": "", "extra_content": None, "missing_content": None,    # candidate vs annotator explanation, from round 1
+               "literal_overlap": None, "literal_reason": "",                   # round 2
+               "a_is": "reference" if ref_first else "candidate",
                "served_model": "", "served_provider": "", "tokens_in": None, "tokens_out": None}
         if t["verdict"] is not None: return row                   # invalid outputs need no judge call
-        if args.dry_run: row["verdict"], row["reason"] = dry_verdict(c["insider"], t["candidate"]); return row
-        kw = dict(model=args.judge_model, temperature=0, max_tokens=args.max_tokens,
-                  messages=[{"role": "system", "content": RUBRIC}, {"role": "user", "content": user_message(c, t["candidate"], ref_first)}])
-        if extra: kw["extra_body"] = extra
-        if not args.no_schema: kw["response_format"] = {"type": "json_schema", "json_schema": {"name": "verdict", "schema": SCHEMA, "strict": True}}
-        err = ""
-        for attempt in range(3):
-            try:
-                resp = client.chat.completions.create(**kw); choice = resp.choices[0]
-                m = re.search(r"\{.*\}", choice.message.content or "", re.S)
-                if not m: err = f"no JSON in reply (finish_reason={choice.finish_reason})"
-                else:
-                    j = json.loads(m.group(0)); v = str(j["verdict"]).strip().lower()
-                    if v in VERDICTS:
-                        u = resp.usage
-                        row.update(verdict=v, reason=str(j.get("reason", "")), served_model=resp.model,
-                                   served_provider=str(getattr(resp, "provider", "") or ""),
-                                   tokens_in=u.prompt_tokens if u else None, tokens_out=u.completion_tokens if u else None)
-                        return row
-                    err = f"bad verdict {j['verdict']!r}"
-            except Exception as e: err = str(e)
-            time.sleep(2 ** attempt)
-        row["verdict"], row["reason"] = "judge_error", err; return row
+        if args.dry_run:
+            row["verdict"], row["reason"] = dry_verdict(c["insider"], t["candidate"])
+            row.update(extra_content=False, missing_content=False, literal_reason="dry-run heuristic",
+                       literal_overlap=dry_verdict(c["literal"] or "", t["candidate"])[0]); return row
+
+        j, resp, err = ask(client, args, extra, RUBRIC, user_message(c, t["candidate"], ref_first), SCHEMA, check_main)
+        if j is None: row["verdict"], row["reason"] = "judge_error", err; return row
+        only_cand, only_ref = (j["only_b"], j["only_a"]) if ref_first else (j["only_a"], j["only_b"])
+        diff = j["verdict"] != "not_equivalent"                   # extra/missing detail only counts on a shared core
+        row.update(verdict=j["verdict"], reason=str(j.get("reason", "")), extra_content=only_cand and diff, missing_content=only_ref and diff,
+                   served_model=resp.model, served_provider=str(getattr(resp, "provider", "") or ""))
+        add_tokens(row, resp)
+
+        if (c["literal"] or "").strip():
+            j, resp, err = ask(client, args, extra, LITERAL_RUBRIC, literal_message(c, t["candidate"]), LITERAL_SCHEMA, check_literal)
+            if j is None: row["verdict"], row["reason"] = "judge_error", f"literal round: {err}"; return row   # redone on the next run
+            row.update(literal_overlap=j["literal_overlap"], literal_reason=str(j.get("reason", "")))
+            add_tokens(row, resp)
+        return row
 
     with open(out_path, "a", encoding="utf-8") as f, ThreadPoolExecutor(args.workers) as pool:
         for row in pool.map(work, todo):
@@ -149,6 +208,9 @@ def run_tasks(tasks, refs, args, out_path):
     who = collections.Counter((r.get("served_model", ""), r.get("served_provider", "")) for r in rows if r.get("served_model"))
     if who: print("answered by:", dict(who), "| tokens in/out:", sum(r["tokens_in"] or 0 for r in rows), "/", sum(r["tokens_out"] or 0 for r in rows))
     print(f"{out_path.name}: {n} judgments ({len(todo)} new) | " + " | ".join(f"{v} {cnt[v]} ({cnt[v]/n:.0%})" for v in VERDICTS + ["invalid", "judge_error"] if cnt[v]))
+    lit = collections.Counter(r.get("literal_overlap") for r in rows if r.get("literal_overlap"))
+    if lit: print("  literal_overlap: " + " | ".join(f"{v} {lit[v]}" for v in VERDICTS if lit[v])
+                  + f" | extra_content {sum(bool(r.get('extra_content')) for r in rows)} | missing_content {sum(bool(r.get('missing_content')) for r in rows)}")
 
 def cmd_run(args):
     refs, rows = load_refs(), load_results(args.results, args.runs)
@@ -209,10 +271,10 @@ def main():
     def common(p):
         p.add_argument("--judge-model"); p.add_argument("--base-url"); p.add_argument("--workers", type=int, default=8)
         p.add_argument("--split", required=True, choices=["dev", "test", "all"]); p.add_argument("--dry-run", action="store_true")
-        p.add_argument("--no-schema", action="store_true"); p.add_argument("--max-tokens", type=int, default=200)
+        p.add_argument("--no-schema", action="store_true"); p.add_argument("--max-tokens", type=int, default=400)
         p.add_argument("--extra-body", help='JSON merged into the request, e.g. OpenRouter: \'{"reasoning": {"effort": "none"}, "provider": {"order": ["openai"], "allow_fallbacks": false}}\'')
     r = sub.add_parser("run"); common(r); r.add_argument("--results", required=True); r.add_argument("--runs", type=int, default=1); r.set_defaults(f=cmd_run)
-    c = sub.add_parser("control"); common(c); c.add_argument("--kind", required=True, choices=["literal", "shuffled"]); c.set_defaults(f=cmd_control)
+    c = sub.add_parser("control"); common(c); c.add_argument("--kind", required=True, choices=["literal", "shuffled", "reference"]); c.set_defaults(f=cmd_control)
     s = sub.add_parser("sample"); s.add_argument("--judgments", nargs="+", required=True); s.add_argument("--n", type=int, default=100)
     s.add_argument("--dir", default=str(config.JUDGE_DIR)); s.set_defaults(f=cmd_sample)
     a = sub.add_parser("agree"); a.add_argument("--dir", default=str(config.JUDGE_DIR)); a.set_defaults(f=cmd_agree)
