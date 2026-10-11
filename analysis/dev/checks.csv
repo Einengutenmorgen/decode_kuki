@@ -1,0 +1,10 @@
+check,group,n,value
+position bias (mean score by who is Explanation A),"control, A = candidate",50,0.9
+position bias (mean score by who is Explanation A),"control, A = reference",50,0.74
+position bias (mean score by who is Explanation A),"model, A = candidate",625,1.4736
+position bias (mean score by who is Explanation A),"model, A = reference",625,1.4272
+"control score (literal = floor, shuffled = chance)",control-literal,50,1.56
+"control score (literal = floor, shuffled = chance)",control-shuffled,50,0.08
+default-condition score (compare with controls),gemma4-12b,50,1.76
+default-condition score (compare with controls),gemma4-e4b,50,1.64
+default-condition score (compare with controls),olmo3-7b-instruct,50,1.12
