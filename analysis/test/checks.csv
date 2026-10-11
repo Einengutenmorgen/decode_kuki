@@ -1,0 +1,25 @@
+check,group,n,value
+position bias (mean score by who is Explanation A),"control, A = candidate",1494,1.0950468540829987
+position bias (mean score by who is Explanation A),"control, A = reference",1494,1.0742971887550201
+position bias (mean score by who is Explanation A),"model, A = candidate",19920,1.0970883534136546
+position bias (mean score by who is Explanation A),"model, A = reference",19920,1.1174698795180722
+"control score (literal = floor, shuffled = chance, reference = 2.0)",control-literal,996,1.1114457831325302
+control: share with strict equivalent,control-literal,996,0.12951807228915663
+"control: share with round 2 = only restates literal (literal ~1, shuffled ~0)",control-literal,996,0.9899598393574297
+control: share with extra_content flag,control-literal,996,0.019076305220883535
+control: share with missing_content flag,control-literal,996,0.8453815261044176
+"control score (literal = floor, shuffled = chance, reference = 2.0)",control-reference,996,2.0
+control: share with strict equivalent,control-reference,996,1.0
+"control: share with round 2 = only restates literal (literal ~1, shuffled ~0)",control-reference,996,0.009036144578313253
+control: share with extra_content flag,control-reference,996,0.0
+control: share with missing_content flag,control-reference,996,0.0
+"control score (literal = floor, shuffled = chance, reference = 2.0)",control-shuffled,996,0.142570281124498
+control: share with strict equivalent,control-shuffled,996,0.007028112449799197
+"control: share with round 2 = only restates literal (literal ~1, shuffled ~0)",control-shuffled,996,0.001004016064257028
+control: share with extra_content flag,control-shuffled,996,0.10943775100401607
+control: share with missing_content flag,control-shuffled,996,0.08734939759036145
+default-condition score (compare with controls),gemma4-12b,996,1.1706827309236947
+default-condition score (compare with controls),gemma4-31b,996,1.283132530120482
+default-condition score (compare with controls),gemma4-e4b,996,1.2740963855421688
+default-condition score (compare with controls),olmo3-7b-instruct,996,0.9016064257028112
+default-condition score (compare with controls),olmo3.1-32b,996,1.1656626506024097

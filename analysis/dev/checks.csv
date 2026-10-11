@@ -1,10 +1,25 @@
 check,group,n,value
-position bias (mean score by who is Explanation A),"control, A = candidate",50,0.9
-position bias (mean score by who is Explanation A),"control, A = reference",50,0.74
-position bias (mean score by who is Explanation A),"model, A = candidate",625,1.4736
-position bias (mean score by who is Explanation A),"model, A = reference",625,1.4272
-"control score (literal = floor, shuffled = chance)",control-literal,50,1.56
-"control score (literal = floor, shuffled = chance)",control-shuffled,50,0.08
-default-condition score (compare with controls),gemma4-12b,50,1.76
-default-condition score (compare with controls),gemma4-e4b,50,1.64
-default-condition score (compare with controls),olmo3-7b-instruct,50,1.12
+position bias (mean score by who is Explanation A),"control, A = candidate",69,1.144927536231884
+position bias (mean score by who is Explanation A),"control, A = reference",72,1.0138888888888888
+position bias (mean score by who is Explanation A),"model, A = candidate",920,1.1456521739130434
+position bias (mean score by who is Explanation A),"model, A = reference",960,1.0614583333333334
+"control score (literal = floor, shuffled = chance, reference = 2.0)",control-literal,47,1.1702127659574468
+control: share with strict equivalent,control-literal,47,0.2127659574468085
+"control: share with round 2 = only restates literal (literal ~1, shuffled ~0)",control-literal,47,0.9787234042553191
+control: share with extra_content flag,control-literal,47,0.02127659574468085
+control: share with missing_content flag,control-literal,47,0.7446808510638298
+"control score (literal = floor, shuffled = chance, reference = 2.0)",control-reference,47,2.0
+control: share with strict equivalent,control-reference,47,1.0
+"control: share with round 2 = only restates literal (literal ~1, shuffled ~0)",control-reference,47,0.0
+control: share with extra_content flag,control-reference,47,0.0
+control: share with missing_content flag,control-reference,47,0.0
+"control score (literal = floor, shuffled = chance, reference = 2.0)",control-shuffled,47,0.06382978723404255
+control: share with strict equivalent,control-shuffled,47,0.0
+"control: share with round 2 = only restates literal (literal ~1, shuffled ~0)",control-shuffled,47,0.0
+control: share with extra_content flag,control-shuffled,47,0.06382978723404255
+control: share with missing_content flag,control-shuffled,47,0.0425531914893617
+default-condition score (compare with controls),gemma4-12b,47,1.1914893617021276
+default-condition score (compare with controls),gemma4-31b,47,1.2765957446808511
+default-condition score (compare with controls),gemma4-e4b,47,1.2127659574468086
+default-condition score (compare with controls),olmo3-7b-instruct,47,0.9148936170212766
+default-condition score (compare with controls),olmo3.1-32b,47,1.1702127659574468

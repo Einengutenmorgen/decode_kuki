@@ -1,0 +1,129 @@
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1044} | tokens in/out: 1224183 / 118417
+ctx-article__title-0__outlet-none__en__named__gemma4-12b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 23 (2%) | partially_equivalent 804 (77%) | equivalent 217 (21%) | invalid 2 (0%)
+  literal_overlap: not_equivalent 697 | partially_equivalent 336 | extra_content 881 | missing_content 115
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1222640 / 118359
+ctx-paragraph__title-0__outlet-none__en__named__gemma4-12b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 39 (4%) | partially_equivalent 788 (75%) | equivalent 219 (21%)
+  literal_overlap: not_equivalent 679 | partially_equivalent 356 | extra_content 856 | missing_content 123
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1223041 / 118708
+ctx-paragraph__title-0__outlet-swapped__en__named__gemma4-12b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 44 (4%) | partially_equivalent 796 (76%) | equivalent 206 (20%)
+  literal_overlap: not_equivalent 707 | partially_equivalent 328 | extra_content 856 | missing_content 125
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1044} | tokens in/out: 1220438 / 118172
+ctx-paragraph__title-0__outlet-true__en__named__gemma4-12b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 42 (4%) | partially_equivalent 790 (76%) | equivalent 212 (20%) | invalid 2 (0%)
+  literal_overlap: not_equivalent 692 | partially_equivalent 341 | extra_content 851 | missing_content 131
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1044} | tokens in/out: 1219899 / 118109
+ctx-paragraph__title-1__outlet-none__en__named__gemma4-12b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 31 (3%) | partially_equivalent 801 (77%) | equivalent 212 (20%) | invalid 2 (0%)
+  literal_overlap: not_equivalent 717 | partially_equivalent 316 | extra_content 862 | missing_content 139
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1044} | tokens in/out: 1222712 / 117758
+ctx-phrase__title-0__outlet-none__en__named__gemma4-12b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 150 (14%) | partially_equivalent 740 (71%) | equivalent 154 (15%) | invalid 2 (0%)
+  literal_overlap: not_equivalent 721 | partially_equivalent 312 | extra_content 784 | missing_content 251
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1221767 / 117955
+ctx-phrase__title-1__outlet-none__en__named__gemma4-12b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 117 (11%) | partially_equivalent 778 (74%) | equivalent 151 (14%)
+  literal_overlap: not_equivalent 687 | partially_equivalent 348 | extra_content 819 | missing_content 215
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1217852 / 118002
+ctx-sentence__title-0__outlet-none__en__named__gemma4-12b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 56 (5%) | partially_equivalent 793 (76%) | equivalent 197 (19%)
+  literal_overlap: not_equivalent 683 | partially_equivalent 351 | equivalent 1 | extra_content 830 | missing_content 180
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1207111 / 117997
+ctx-article__title-0__outlet-none__en__named__gemma4-31b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 10 (1%) | partially_equivalent 731 (70%) | equivalent 305 (29%)
+  literal_overlap: not_equivalent 626 | partially_equivalent 409 | extra_content 828 | missing_content 106
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1198028 / 117456
+ctx-paragraph__title-0__outlet-none__en__named__gemma4-31b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 18 (2%) | partially_equivalent 714 (68%) | equivalent 314 (30%)
+  literal_overlap: not_equivalent 625 | partially_equivalent 410 | extra_content 793 | missing_content 151
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1198170 / 117004
+ctx-paragraph__title-0__outlet-swapped__en__named__gemma4-31b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 22 (2%) | partially_equivalent 687 (66%) | equivalent 337 (32%)
+  literal_overlap: not_equivalent 611 | partially_equivalent 424 | extra_content 779 | missing_content 138
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1196663 / 117045
+ctx-paragraph__title-0__outlet-true__en__named__gemma4-31b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 23 (2%) | partially_equivalent 694 (66%) | equivalent 329 (31%)
+  literal_overlap: not_equivalent 587 | partially_equivalent 448 | extra_content 756 | missing_content 130
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1197607 / 117507
+ctx-paragraph__title-1__outlet-none__en__named__gemma4-31b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 23 (2%) | partially_equivalent 710 (68%) | equivalent 313 (30%)
+  literal_overlap: not_equivalent 655 | partially_equivalent 380 | extra_content 793 | missing_content 134
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1198144 / 117143
+ctx-phrase__title-0__outlet-none__en__named__gemma4-31b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 126 (12%) | partially_equivalent 718 (69%) | equivalent 202 (19%)
+  literal_overlap: not_equivalent 647 | partially_equivalent 388 | extra_content 764 | missing_content 203
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1196733 / 116993
+ctx-phrase__title-1__outlet-none__en__named__gemma4-31b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 77 (7%) | partially_equivalent 716 (68%) | equivalent 253 (24%)
+  literal_overlap: not_equivalent 626 | partially_equivalent 409 | extra_content 778 | missing_content 204
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1196006 / 117078
+ctx-sentence__title-0__outlet-none__en__named__gemma4-31b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 44 (4%) | partially_equivalent 653 (62%) | equivalent 349 (33%)
+  literal_overlap: not_equivalent 602 | partially_equivalent 433 | extra_content 724 | missing_content 153
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1207472 / 117486
+ctx-article__title-0__outlet-none__en__named__gemma4-e4b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 42 (4%) | partially_equivalent 644 (62%) | equivalent 360 (34%)
+  literal_overlap: not_equivalent 561 | partially_equivalent 474 | extra_content 698 | missing_content 197
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1201052 / 117056
+ctx-paragraph__title-0__outlet-none__en__named__gemma4-e4b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 58 (6%) | partially_equivalent 646 (62%) | equivalent 342 (33%)
+  literal_overlap: not_equivalent 580 | partially_equivalent 455 | extra_content 693 | missing_content 243
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1199785 / 116899
+ctx-paragraph__title-0__outlet-swapped__en__named__gemma4-e4b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 53 (5%) | partially_equivalent 630 (60%) | equivalent 363 (35%)
+  literal_overlap: not_equivalent 567 | partially_equivalent 468 | extra_content 673 | missing_content 224
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1200388 / 116786
+ctx-paragraph__title-0__outlet-true__en__named__gemma4-e4b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 57 (5%) | partially_equivalent 649 (62%) | equivalent 340 (33%)
+  literal_overlap: not_equivalent 587 | partially_equivalent 448 | extra_content 677 | missing_content 247
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1201396 / 116973
+ctx-paragraph__title-1__outlet-none__en__named__gemma4-e4b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 55 (5%) | partially_equivalent 660 (63%) | equivalent 331 (32%)
+  literal_overlap: not_equivalent 586 | partially_equivalent 449 | extra_content 705 | missing_content 228
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1202418 / 116408
+ctx-phrase__title-0__outlet-none__en__named__gemma4-e4b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 171 (16%) | partially_equivalent 640 (61%) | equivalent 235 (22%)
+  literal_overlap: not_equivalent 565 | partially_equivalent 470 | extra_content 633 | missing_content 363
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1197779 / 116224
+ctx-phrase__title-1__outlet-none__en__named__gemma4-e4b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 134 (13%) | partially_equivalent 663 (63%) | equivalent 249 (24%)
+  literal_overlap: not_equivalent 558 | partially_equivalent 476 | equivalent 1 | extra_content 661 | missing_content 356
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1199426 / 116786
+ctx-sentence__title-0__outlet-none__en__named__gemma4-e4b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 81 (8%) | partially_equivalent 662 (63%) | equivalent 303 (29%)
+  literal_overlap: not_equivalent 601 | partially_equivalent 434 | extra_content 664 | missing_content 286
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1044} | tokens in/out: 1187668 / 116087
+ctx-article__title-0__outlet-none__en__named__olmo3.1-32b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 86 (8%) | partially_equivalent 602 (58%) | equivalent 356 (34%) | invalid 2 (0%)
+  literal_overlap: not_equivalent 509 | partially_equivalent 524 | extra_content 631 | missing_content 264
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1043} | tokens in/out: 1189371 / 116141
+ctx-paragraph__title-0__outlet-none__en__named__olmo3.1-32b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 136 (13%) | partially_equivalent 594 (57%) | equivalent 313 (30%) | invalid 3 (0%)
+  literal_overlap: not_equivalent 552 | partially_equivalent 479 | equivalent 1 | extra_content 614 | missing_content 283
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1044} | tokens in/out: 1191180 / 116177
+ctx-paragraph__title-0__outlet-swapped__en__named__olmo3.1-32b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 138 (13%) | partially_equivalent 587 (56%) | equivalent 319 (30%) | invalid 2 (0%)
+  literal_overlap: not_equivalent 536 | partially_equivalent 497 | extra_content 611 | missing_content 307
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1044} | tokens in/out: 1191596 / 116198
+ctx-paragraph__title-0__outlet-true__en__named__olmo3.1-32b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 132 (13%) | partially_equivalent 594 (57%) | equivalent 318 (30%) | invalid 2 (0%)
+  literal_overlap: not_equivalent 546 | partially_equivalent 485 | equivalent 2 | extra_content 629 | missing_content 286
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1044} | tokens in/out: 1191298 / 116038
+ctx-paragraph__title-1__outlet-none__en__named__olmo3.1-32b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 128 (12%) | partially_equivalent 602 (58%) | equivalent 314 (30%) | invalid 2 (0%)
+  literal_overlap: not_equivalent 536 | partially_equivalent 496 | equivalent 1 | extra_content 635 | missing_content 287
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1193502 / 115222
+ctx-phrase__title-0__outlet-none__en__named__olmo3.1-32b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 356 (34%) | partially_equivalent 549 (52%) | equivalent 141 (13%)
+  literal_overlap: not_equivalent 620 | partially_equivalent 415 | extra_content 552 | missing_content 313
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1197123 / 115948
+ctx-phrase__title-1__outlet-none__en__named__olmo3.1-32b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 276 (26%) | partially_equivalent 622 (59%) | equivalent 148 (14%)
+  literal_overlap: not_equivalent 596 | partially_equivalent 439 | extra_content 615 | missing_content 355
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1044} | tokens in/out: 1190710 / 115454
+ctx-sentence__title-0__outlet-none__en__named__olmo3.1-32b__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 185 (18%) | partially_equivalent 587 (56%) | equivalent 272 (26%) | invalid 2 (0%)
+  literal_overlap: not_equivalent 557 | partially_equivalent 474 | equivalent 2 | extra_content 597 | missing_content 327
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1044} | tokens in/out: 1193075 / 115050
+ctx-article__title-0__outlet-none__en__named__olmo3-7b-instruct__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 185 (18%) | partially_equivalent 688 (66%) | equivalent 171 (16%) | invalid 2 (0%)
+  literal_overlap: not_equivalent 625 | partially_equivalent 408 | extra_content 708 | missing_content 351
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1184438 / 114660
+ctx-paragraph__title-0__outlet-none__en__named__olmo3-7b-instruct__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 274 (26%) | partially_equivalent 599 (57%) | equivalent 173 (17%)
+  literal_overlap: not_equivalent 639 | partially_equivalent 396 | extra_content 577 | missing_content 410
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1044} | tokens in/out: 1182742 / 114521
+ctx-paragraph__title-0__outlet-swapped__en__named__olmo3-7b-instruct__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 267 (26%) | partially_equivalent 590 (56%) | equivalent 187 (18%) | invalid 2 (0%)
+  literal_overlap: not_equivalent 620 | partially_equivalent 412 | equivalent 1 | extra_content 584 | missing_content 393
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1044} | tokens in/out: 1182526 / 114922
+ctx-paragraph__title-0__outlet-true__en__named__olmo3-7b-instruct__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 260 (25%) | partially_equivalent 599 (57%) | equivalent 185 (18%) | invalid 2 (0%)
+  literal_overlap: not_equivalent 616 | partially_equivalent 417 | extra_content 583 | missing_content 400
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1045} | tokens in/out: 1182662 / 114768
+ctx-paragraph__title-1__outlet-none__en__named__olmo3-7b-instruct__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 267 (26%) | partially_equivalent 606 (58%) | equivalent 172 (16%) | invalid 1 (0%)
+  literal_overlap: not_equivalent 640 | partially_equivalent 394 | extra_content 589 | missing_content 389
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1177662 / 113268
+ctx-phrase__title-0__outlet-none__en__named__olmo3-7b-instruct__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 433 (41%) | partially_equivalent 537 (51%) | equivalent 76 (7%)
+  literal_overlap: not_equivalent 665 | partially_equivalent 364 | equivalent 6 | extra_content 476 | missing_content 417
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1046} | tokens in/out: 1180760 / 113636
+ctx-phrase__title-1__outlet-none__en__named__olmo3-7b-instruct__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 425 (41%) | partially_equivalent 541 (52%) | equivalent 80 (8%)
+  literal_overlap: not_equivalent 697 | partially_equivalent 334 | equivalent 4 | extra_content 504 | missing_content 397
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 1043} | tokens in/out: 1178179 / 114212
+ctx-sentence__title-0__outlet-none__en__named__olmo3-7b-instruct__v2__openai_gpt-6-luna-20260922__j3.jsonl: 1046 judgments (996 new) | not_equivalent 299 (29%) | partially_equivalent 591 (57%) | equivalent 153 (15%) | invalid 3 (0%)
+  literal_overlap: not_equivalent 632 | partially_equivalent 395 | equivalent 5 | extra_content 568 | missing_content 427
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 996} | tokens in/out: 1091534 / 101670
+control-shuffled__test__openai_gpt-6-luna-20260922__j3.jsonl: 996 judgments (996 new) | not_equivalent 861 (86%) | partially_equivalent 128 (13%) | equivalent 7 (1%)
+  literal_overlap: not_equivalent 977 | partially_equivalent 8 | equivalent 1 | extra_content 109 | missing_content 87
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 986} | tokens in/out: 1069902 / 91795
+control-literal__test__openai_gpt-6-luna-20260922__j3.jsonl: 996 judgments (996 new) | not_equivalent 8 (1%) | partially_equivalent 849 (85%) | equivalent 129 (13%) | invalid 10 (1%)
+  literal_overlap: equivalent 986 | extra_content 19 | missing_content 842
+answered by: {('openai/gpt-6-luna', 'OpenAI'): 996} | tokens in/out: 1091606 / 95824
+control-reference__test__openai_gpt-6-luna-20260922__j3.jsonl: 996 judgments (996 new) | equivalent 996 (100%)
+  literal_overlap: not_equivalent 531 | partially_equivalent 446 | equivalent 9 | extra_content 0 | missing_content 0
