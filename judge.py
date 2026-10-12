@@ -4,9 +4,10 @@ Two rounds of calls per item (j3):
      blind to condition and model -> verdict (core meaning), plus which side holds substantial extra ideas (mapped back to the candidate).
   2. literal round: how far does the candidate only restate the annotator's literal (surface) reading? -> literal_overlap.
   python judge.py run --results results/<n>.jsonl --judge-model <model> --split dev|test|all [--base-url URL] [--runs 1] [--dry-run]
-  python judge.py control --kind literal|shuffled|reference --judge-model <model> --split dev|test|all [--dry-run]
+  python judge.py control --kind literal|shuffled|reference|annotator --judge-model <model> --split dev|test|all [--dry-run]
       literal = annotator's literal reading as candidate (floor); shuffled = another case's reference (chance);
       reference = the annotator's own insider text as candidate (identity check; round 2 shows which references only restate their literal reading)
+      annotator = the insider text of another annotator who marked the same span in the same article (human ceiling; test split only, written to judgments/annotator/)
   python judge.py sample --judgments judgments/ctx-*__j3.jsonl [--n 100]   # blind sheet for hand labelling (dev only)
   python judge.py agree [--dir judgments]                                   # judge-vs-human agreement after labelling
 Any OpenAI-compatible endpoint works (vLLM, OpenRouter, ...); key in env JUDGE_API_KEY. --no-schema if it lacks json_schema support;
@@ -89,8 +90,22 @@ def tasks_from_results(rows, refs, split):
 
 def control_tasks(kind, refs, split):
     """literal: the annotator's own literal reading as candidate (floor). shuffled: another case's reference (chance).
-    reference: the annotator's own insider text as candidate (identity check; round 2 flags references that only restate their literal reading)."""
+    reference: the annotator's own insider text as candidate (identity check; round 2 flags references that only restate their literal reading).
+    annotator: the insider text of another annotator who marked the same span in the same article (human ceiling). One task per ordered
+    pair: the case is the reference row, `run` counts its partners, `partner_id` names the candidate row."""
     rng, tasks = random.Random(config.SEED), []
+    if kind == "annotator":
+        spans = collections.defaultdict(list)                   # (article, span "start-end") -> case_ids of all annotators
+        for k, c in sorted(refs.items()):
+            if split == "all" or c["split"] == split: spans[(c["article_id"], k.rsplit(":", 1)[-1])].append(k)
+        for ids in spans.values():
+            for a in ids:
+                for i, b in enumerate(x for x in ids if refs[x]["annotator"] != refs[a]["annotator"]):
+                    cand = refs[b]["insider"].strip()
+                    tasks.append(dict(case_id=a, condition_id="control-annotator", model="control", run=i, naming="named",
+                                      candidate=cand or None, matched_phrase="", partner_id=b, verdict=None if cand else "invalid"))
+        print(f"annotator pairs: {len(tasks)} ordered pairs over {len({t['case_id'] for t in tasks})} reference rows ({split})")
+        return tasks
     for lang in ("ru", "tr"):
         ids = sorted(k for k, c in refs.items() if c["lang"] == lang and (split == "all" or c["split"] == split))
         perm = ids[:]
@@ -221,7 +236,8 @@ def cmd_run(args):
 
 def cmd_control(args):
     refs = load_refs()
-    run_tasks(control_tasks(args.kind, refs, args.split), refs, args, config.JUDGE_DIR / f"control-{args.kind}__{args.split}__{tag(args)}.jsonl")
+    sub = "annotator" if args.kind == "annotator" else ""      # pair rows repeat case_ids: own folder, so analysis.py's glob does not see them
+    run_tasks(control_tasks(args.kind, refs, args.split), refs, args, config.JUDGE_DIR / sub / f"control-{args.kind}__{args.split}__{tag(args)}.jsonl")
 
 def tag(args): return f"{'dry-run' if args.dry_run else args.judge_model.replace('/', '_')}__{JUDGE_VERSION}"
 
@@ -274,7 +290,7 @@ def main():
         p.add_argument("--no-schema", action="store_true"); p.add_argument("--max-tokens", type=int, default=400)
         p.add_argument("--extra-body", help='JSON merged into the request, e.g. OpenRouter: \'{"reasoning": {"effort": "none"}, "provider": {"order": ["openai"], "allow_fallbacks": false}}\'')
     r = sub.add_parser("run"); common(r); r.add_argument("--results", required=True); r.add_argument("--runs", type=int, default=1); r.set_defaults(f=cmd_run)
-    c = sub.add_parser("control"); common(c); c.add_argument("--kind", required=True, choices=["literal", "shuffled", "reference"]); c.set_defaults(f=cmd_control)
+    c = sub.add_parser("control"); common(c); c.add_argument("--kind", required=True, choices=["literal", "shuffled", "reference", "annotator"]); c.set_defaults(f=cmd_control)
     s = sub.add_parser("sample"); s.add_argument("--judgments", nargs="+", required=True); s.add_argument("--n", type=int, default=100)
     s.add_argument("--dir", default=str(config.JUDGE_DIR)); s.set_defaults(f=cmd_sample)
     a = sub.add_parser("agree"); a.add_argument("--dir", default=str(config.JUDGE_DIR)); a.set_defaults(f=cmd_agree)

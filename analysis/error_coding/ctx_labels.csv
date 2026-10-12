@@ -1,0 +1,121 @@
+gid,slot,context,model,case_id,verdict,codes,note
+g000,1,sentence,olmo3-7b-instruct,tr:sabah:2023-08-04__muhalefetteki-kanamayi-durdurmak-mumkun-mu:tr_C:1995-2011,partially_equivalent,w,
+g000,2,paragraph,olmo3-7b-instruct,tr:sabah:2023-08-04__muhalefetteki-kanamayi-durdurmak-mumkun-mu:tr_C:1995-2011,not_equivalent,w,
+g000,3,article,olmo3-7b-instruct,tr:sabah:2023-08-04__muhalefetteki-kanamayi-durdurmak-mumkun-mu:tr_C:1995-2011,not_equivalent,w,
+g000,4,phrase,olmo3-7b-instruct,tr:sabah:2023-08-04__muhalefetteki-kanamayi-durdurmak-mumkun-mu:tr_C:1995-2011,not_equivalent,w,
+g001,1,paragraph,gemma4-31b,ru:holod:hotyat-li-voennye-zaversheniya-vojny:ru_C:83-95,partially_equivalent,h,
+g001,2,sentence,gemma4-31b,ru:holod:hotyat-li-voennye-zaversheniya-vojny:ru_C:83-95,equivalent,h,
+g001,3,article,gemma4-31b,ru:holod:hotyat-li-voennye-zaversheniya-vojny:ru_C:83-95,partially_equivalent,h,
+g001,4,phrase,gemma4-31b,ru:holod:hotyat-li-voennye-zaversheniya-vojny:ru_C:83-95,partially_equivalent,x,
+g002,1,article,olmo3-7b-instruct,ru:ng:6_8272_vision:ru_C:4510-4528,partially_equivalent,x,
+g002,2,phrase,olmo3-7b-instruct,ru:ng:6_8272_vision:ru_C:4510-4528,not_equivalent,w h,
+g002,3,sentence,olmo3-7b-instruct,ru:ng:6_8272_vision:ru_C:4510-4528,equivalent,x,
+g002,4,paragraph,olmo3-7b-instruct,ru:ng:6_8272_vision:ru_C:4510-4528,equivalent,x,
+g003,1,sentence,olmo3-7b-instruct,ru:holod:galiamina-interview:ru_C:5246-5270,equivalent,ok,
+g003,2,phrase,olmo3-7b-instruct,ru:holod:galiamina-interview:ru_C:5246-5270,partially_equivalent,h,
+g003,3,article,olmo3-7b-instruct,ru:holod:galiamina-interview:ru_C:5246-5270,partially_equivalent,w h,
+g003,4,paragraph,olmo3-7b-instruct,ru:holod:galiamina-interview:ru_C:5246-5270,equivalent,ok,
+g004,1,phrase,gemma4-31b,tr:sabah:2022-01-08__kazakistan-ve-olagan-supheliler:tr_C:1320-1347,partially_equivalent,x,
+g004,2,sentence,gemma4-31b,tr:sabah:2022-01-08__kazakistan-ve-olagan-supheliler:tr_C:1320-1347,partially_equivalent,x,
+g004,3,paragraph,gemma4-31b,tr:sabah:2022-01-08__kazakistan-ve-olagan-supheliler:tr_C:1320-1347,partially_equivalent,h,
+g004,4,article,gemma4-31b,tr:sabah:2022-01-08__kazakistan-ve-olagan-supheliler:tr_C:1320-1347,equivalent,x,
+g005,1,phrase,gemma4-31b,tr:yenicag:572322:tr_A:5156-5283,not_equivalent,o,"refrence is to thin to work with, all explanations are the same"
+g005,2,paragraph,gemma4-31b,tr:yenicag:572322:tr_A:5156-5283,not_equivalent,o,"refrence is to thin to work with, all explanations are the same"
+g005,3,sentence,gemma4-31b,tr:yenicag:572322:tr_A:5156-5283,not_equivalent,o,"refrence is to thin to work with, all explanations are the same"
+g005,4,article,gemma4-31b,tr:yenicag:572322:tr_A:5156-5283,partially_equivalent,o,"refrence is to thin to work with, all explanations are the same"
+g006,1,sentence,gemma4-31b,tr:sabah:2024-09-08__siyonist-vahsete-turk-nesteri:tr_B:2588-2632,partially_equivalent,a,
+g006,2,phrase,gemma4-31b,tr:sabah:2024-09-08__siyonist-vahsete-turk-nesteri:tr_B:2588-2632,equivalent,ok,
+g006,3,article,gemma4-31b,tr:sabah:2024-09-08__siyonist-vahsete-turk-nesteri:tr_B:2588-2632,partially_equivalent,w,
+g006,4,paragraph,gemma4-31b,tr:sabah:2024-09-08__siyonist-vahsete-turk-nesteri:tr_B:2588-2632,partially_equivalent,a,
+g007,1,paragraph,gemma4-31b,ru:theinsider:239886:ru_A:67-92,partially_equivalent,w,specific historic contex and misses general usage
+g007,2,phrase,gemma4-31b,ru:theinsider:239886:ru_A:67-92,equivalent,ok,
+g007,3,sentence,gemma4-31b,ru:theinsider:239886:ru_A:67-92,partially_equivalent,w,# specific historic contex and misses general usage
+g007,4,article,gemma4-31b,ru:theinsider:239886:ru_A:67-92,partially_equivalent,w,
+g008,1,paragraph,olmo3-7b-instruct,ru:theinsider:225823:ru_A:6378-6399,not_equivalent,w h,
+g008,2,phrase,olmo3-7b-instruct,ru:theinsider:225823:ru_A:6378-6399,not_equivalent,w h,
+g008,3,sentence,olmo3-7b-instruct,ru:theinsider:225823:ru_A:6378-6399,not_equivalent,w h,
+g008,4,article,olmo3-7b-instruct,ru:theinsider:225823:ru_A:6378-6399,not_equivalent,w h,all miss the actual flea market (location )
+g009,1,sentence,olmo3-7b-instruct,ru:holod:chepel-pelevin:ru_C:2883-2933,partially_equivalent,l w,all same
+g009,2,paragraph,olmo3-7b-instruct,ru:holod:chepel-pelevin:ru_C:2883-2933,partially_equivalent,l w,all same
+g009,3,article,olmo3-7b-instruct,ru:holod:chepel-pelevin:ru_C:2883-2933,partially_equivalent,l w,all same
+g009,4,phrase,olmo3-7b-instruct,ru:holod:chepel-pelevin:ru_C:2883-2933,not_equivalent,l w,all same
+g010,1,phrase,olmo3-7b-instruct,ru:holod:chto-volnuet-voenkorov-xxvii:ru_A:8292-8295,not_equivalent,w,acronym is completly wrongly mapped (FSB instead of war in Ukraine)
+g010,2,paragraph,olmo3-7b-instruct,ru:holod:chto-volnuet-voenkorov-xxvii:ru_A:8292-8295,partially_equivalent,h,
+g010,3,article,olmo3-7b-instruct,ru:holod:chto-volnuet-voenkorov-xxvii:ru_A:8292-8295,not_equivalent,w,acronym is completly wrongly mapped (FSB instead of war in Ukraine) same as in one
+g010,4,sentence,olmo3-7b-instruct,ru:holod:chto-volnuet-voenkorov-xxvii:ru_A:8292-8295,not_equivalent,h g,generic explanation without real knowledge
+g011,1,paragraph,gemma4-31b,ru:holod:mat:ru_C:5248-5293,partially_equivalent,x,
+g011,2,phrase,gemma4-31b,ru:holod:mat:ru_C:5248-5293,partially_equivalent,h,
+g011,3,sentence,gemma4-31b,ru:holod:mat:ru_C:5248-5293,partially_equivalent,h,
+g011,4,article,gemma4-31b,ru:holod:mat:ru_C:5248-5293,partially_equivalent,x,
+g012,1,sentence,gemma4-31b,tr:cumhuriyet:2491300:tr_C:1643-1665,partially_equivalent,h,
+g012,2,paragraph,gemma4-31b,tr:cumhuriyet:2491300:tr_C:1643-1665,partially_equivalent,ok,
+g012,3,phrase,gemma4-31b,tr:cumhuriyet:2491300:tr_C:1643-1665,partially_equivalent,h w,
+g012,4,article,gemma4-31b,tr:cumhuriyet:2491300:tr_C:1643-1665,equivalent,ok,
+g013,1,sentence,gemma4-31b,ru:holod:malika-musaeva:ru_C:4702-4710,equivalent,w,
+g013,2,phrase,gemma4-31b,ru:holod:malika-musaeva:ru_C:4702-4710,partially_equivalent,w,all use general description and miss chechen relation
+g013,3,article,gemma4-31b,ru:holod:malika-musaeva:ru_C:4702-4710,equivalent,w,all use general description and miss chechen relation
+g013,4,paragraph,gemma4-31b,ru:holod:malika-musaeva:ru_C:4702-4710,partially_equivalent,w,all use general description and miss chechen relation
+g014,1,article,olmo3-7b-instruct,ru:holod:chepel-pelevin:ru_C:871-894,not_equivalent,w,
+g014,2,sentence,olmo3-7b-instruct,ru:holod:chepel-pelevin:ru_C:871-894,not_equivalent,w,
+g014,3,phrase,olmo3-7b-instruct,ru:holod:chepel-pelevin:ru_C:871-894,partially_equivalent,w,
+g014,4,paragraph,olmo3-7b-instruct,ru:holod:chepel-pelevin:ru_C:871-894,equivalent,ok,
+g015,1,sentence,gemma4-31b,ru:theinsider:247833:ru_C:5825-5839,partially_equivalent,h,weak refrence
+g015,2,article,gemma4-31b,ru:theinsider:247833:ru_C:5825-5839,partially_equivalent,h,weak refrence
+g015,3,phrase,gemma4-31b,ru:theinsider:247833:ru_C:5825-5839,partially_equivalent,h,weak refrence
+g015,4,paragraph,gemma4-31b,ru:theinsider:247833:ru_C:5825-5839,partially_equivalent,h,weak refrence
+g016,1,paragraph,olmo3-7b-instruct,ru:holod:pochemu-rossiya-sdala-herson:ru_C:4175-4191,equivalent,h w l,
+g016,2,sentence,olmo3-7b-instruct,ru:holod:pochemu-rossiya-sdala-herson:ru_C:4175-4191,partially_equivalent,h w l,
+g016,3,phrase,olmo3-7b-instruct,ru:holod:pochemu-rossiya-sdala-herson:ru_C:4175-4191,not_equivalent,h w l,
+g016,4,article,olmo3-7b-instruct,ru:holod:pochemu-rossiya-sdala-herson:ru_C:4175-4191,equivalent,h w l,
+g017,1,paragraph,olmo3-7b-instruct,ru:holod:davydov-pugacheva-galkin:ru_B:4779-4837,not_equivalent,w,
+g017,2,phrase,olmo3-7b-instruct,ru:holod:davydov-pugacheva-galkin:ru_B:4779-4837,partially_equivalent,w,
+g017,3,article,olmo3-7b-instruct,ru:holod:davydov-pugacheva-galkin:ru_B:4779-4837,partially_equivalent,w,
+g017,4,sentence,olmo3-7b-instruct,ru:holod:davydov-pugacheva-galkin:ru_B:4779-4837,partially_equivalent,x,
+g018,1,paragraph,olmo3-7b-instruct,ru:holod:rossiiskiie-smi-1990:ru_C:9292-9302,not_equivalent,w,
+g018,2,phrase,olmo3-7b-instruct,ru:holod:rossiiskiie-smi-1990:ru_C:9292-9302,not_equivalent,w,
+g018,3,sentence,olmo3-7b-instruct,ru:holod:rossiiskiie-smi-1990:ru_C:9292-9302,not_equivalent,w,1 and 2 focus on state and 3 focus on opposition inverting effect
+g018,4,article,olmo3-7b-instruct,ru:holod:rossiiskiie-smi-1990:ru_C:9292-9302,partially_equivalent,x,
+g019,1,sentence,olmo3-7b-instruct,ru:theinsider:266563:ru_C:7874-7906,partially_equivalent,g,
+g019,2,paragraph,olmo3-7b-instruct,ru:theinsider:266563:ru_C:7874-7906,partially_equivalent,g,
+g019,3,phrase,olmo3-7b-instruct,ru:theinsider:266563:ru_C:7874-7906,equivalent,x,
+g019,4,article,olmo3-7b-instruct,ru:theinsider:266563:ru_C:7874-7906,not_equivalent,w,
+g020,1,phrase,olmo3-7b-instruct,ru:holod:chto-volnuet-voenkorov-xxix:ru_C:4181-4196,partially_equivalent,x,
+g020,2,sentence,olmo3-7b-instruct,ru:holod:chto-volnuet-voenkorov-xxix:ru_C:4181-4196,equivalent,x,
+g020,3,article,olmo3-7b-instruct,ru:holod:chto-volnuet-voenkorov-xxix:ru_C:4181-4196,partially_equivalent,x,
+g020,4,paragraph,olmo3-7b-instruct,ru:holod:chto-volnuet-voenkorov-xxix:ru_C:4181-4196,equivalent,x,
+g021,1,paragraph,olmo3-7b-instruct,ru:holod:ne-hodi-na-akczii-ne-risuj:ru_C:3475-3485,partially_equivalent,x,
+g021,2,sentence,olmo3-7b-instruct,ru:holod:ne-hodi-na-akczii-ne-risuj:ru_C:3475-3485,partially_equivalent,x,
+g021,3,phrase,olmo3-7b-instruct,ru:holod:ne-hodi-na-akczii-ne-risuj:ru_C:3475-3485,partially_equivalent,x,
+g021,4,article,olmo3-7b-instruct,ru:holod:ne-hodi-na-akczii-ne-risuj:ru_C:3475-3485,equivalent,x,
+g022,1,article,gemma4-31b,ru:holod:hotyat-li-voennye-zaversheniya-vojny:ru_C:482-492,partially_equivalent,ok,
+g022,2,paragraph,gemma4-31b,ru:holod:hotyat-li-voennye-zaversheniya-vojny:ru_C:482-492,partially_equivalent,ok,
+g022,3,phrase,gemma4-31b,ru:holod:hotyat-li-voennye-zaversheniya-vojny:ru_C:482-492,not_equivalent,g,
+g022,4,sentence,gemma4-31b,ru:holod:hotyat-li-voennye-zaversheniya-vojny:ru_C:482-492,partially_equivalent,ok,
+g023,1,sentence,gemma4-31b,ru:holod:chto-volnuet-voenkorov-xxxii:ru_C:7412-7423,partially_equivalent,x,
+g023,2,paragraph,gemma4-31b,ru:holod:chto-volnuet-voenkorov-xxxii:ru_C:7412-7423,partially_equivalent,x,
+g023,3,article,gemma4-31b,ru:holod:chto-volnuet-voenkorov-xxxii:ru_C:7412-7423,partially_equivalent,x,
+g023,4,phrase,gemma4-31b,ru:holod:chto-volnuet-voenkorov-xxxii:ru_C:7412-7423,partially_equivalent,x,
+g024,1,sentence,gemma4-31b,ru:theinsider:242333:ru_C:7037-7068,partially_equivalent,w,
+g024,2,paragraph,gemma4-31b,ru:theinsider:242333:ru_C:7037-7068,partially_equivalent,ok,
+g024,3,article,gemma4-31b,ru:theinsider:242333:ru_C:7037-7068,partially_equivalent,w h,
+g024,4,phrase,gemma4-31b,ru:theinsider:242333:ru_C:7037-7068,partially_equivalent,x,
+g025,1,phrase,gemma4-31b,ru:theinsider:279931:ru_C:8603-8642,partially_equivalent,h,
+g025,2,sentence,gemma4-31b,ru:theinsider:279931:ru_C:8603-8642,partially_equivalent,ok,
+g025,3,paragraph,gemma4-31b,ru:theinsider:279931:ru_C:8603-8642,equivalent,h,
+g025,4,article,gemma4-31b,ru:theinsider:279931:ru_C:8603-8642,partially_equivalent,h,
+g026,1,phrase,gemma4-31b,ru:holod:lichniy-opit-i-gendernoe-neravenstvo:ru_C:7424-7473,partially_equivalent,ok,
+g026,2,article,gemma4-31b,ru:holod:lichniy-opit-i-gendernoe-neravenstvo:ru_C:7424-7473,partially_equivalent,ok,
+g026,3,paragraph,gemma4-31b,ru:holod:lichniy-opit-i-gendernoe-neravenstvo:ru_C:7424-7473,partially_equivalent,ok,
+g026,4,sentence,gemma4-31b,ru:holod:lichniy-opit-i-gendernoe-neravenstvo:ru_C:7424-7473,partially_equivalent,ok,
+g027,1,paragraph,olmo3-7b-instruct,ru:holod:chto-volnuet-voenkorov-xxxii:ru_C:6211-6219,not_equivalent,l h,completly wrong
+g027,2,phrase,olmo3-7b-instruct,ru:holod:chto-volnuet-voenkorov-xxxii:ru_C:6211-6219,partially_equivalent,g,
+g027,3,sentence,olmo3-7b-instruct,ru:holod:chto-volnuet-voenkorov-xxxii:ru_C:6211-6219,not_equivalent,g h w,
+g027,4,article,olmo3-7b-instruct,ru:holod:chto-volnuet-voenkorov-xxxii:ru_C:6211-6219,not_equivalent,g h,
+g028,1,article,gemma4-31b,ru:theinsider:240028:ru_A:4515-4527,partially_equivalent,x,
+g028,2,sentence,gemma4-31b,ru:theinsider:240028:ru_A:4515-4527,partially_equivalent,x,
+g028,3,phrase,gemma4-31b,ru:theinsider:240028:ru_A:4515-4527,partially_equivalent,x,
+g028,4,paragraph,gemma4-31b,ru:theinsider:240028:ru_A:4515-4527,partially_equivalent,x,
+g029,1,article,olmo3-7b-instruct,ru:holod:strelkov-opinion:ru_C:5448-5473,partially_equivalent,ok,
+g029,2,phrase,olmo3-7b-instruct,ru:holod:strelkov-opinion:ru_C:5448-5473,partially_equivalent,ok,
+g029,3,paragraph,olmo3-7b-instruct,ru:holod:strelkov-opinion:ru_C:5448-5473,partially_equivalent,ok,
+g029,4,sentence,olmo3-7b-instruct,ru:holod:strelkov-opinion:ru_C:5448-5473,partially_equivalent,ok,
